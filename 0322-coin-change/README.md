@@ -33,3 +33,8 @@
 	<li><code>0 &lt;= amount &lt;= 10<sup>4</sup></code></li>
 </ul>
 </div>
+
+## Note
+- If input = [1,2,5], coins = 11
+	- For f(11), we should return min(f(10), f(9), f(6))
+	- We should record the same value so that we don't have to do another same recursive if we meet the same f(value)
