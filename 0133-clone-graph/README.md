@@ -58,7 +58,7 @@
 </ul>
 </div>
 
-<h3>Method</h3><hr>
+<h3>Note</h3><hr>
 <p><strong>Method:</strong></p>
 <ul>
 	<li>DFS all the node</li>
