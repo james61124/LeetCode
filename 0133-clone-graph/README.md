@@ -58,4 +58,10 @@
 </ul>
 </div>
 
-<h3>Medium</h3><hr>
+<h3>Method</h3><hr>
+<p><strong>Method:</strong></p>
+<ul>
+	<li>DFS all the node</li>
+	<li>For the DFS structrue, we set visited flag at first. Then, do the for loop. In each loop, we would check whether the child node is visited.</li>
+	<li>However, if the child has already been visited, we must return the node as well. The solution is to record the pointer in visited vector.</li>
+</ul>
