@@ -1,1 +1,4 @@
-​
+- 先 sort
+- 固定 i
+- j = i + 1, k = nums.size()-1
+- 如果 nums[i]+nums[j]+nums[k] > 0，j++，如果<0，k--，如果==0，兩個都動
