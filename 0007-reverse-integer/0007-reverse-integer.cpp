@@ -4,7 +4,6 @@ public:
     int reverse(int x) {
         try {
             string s = "";
-            cout<<x<<endl;
             if(x<0){
                 s = "-";
                 
