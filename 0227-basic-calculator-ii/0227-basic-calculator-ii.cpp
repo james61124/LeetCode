@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void calculate(stack<int>&mystack, char sign, int tmp){
+    void cal(stack<int>&mystack, char sign, int tmp){
         if(sign=='+') mystack.push(tmp);
         else if(sign=='-') mystack.push(-tmp);
         else if(sign=='*'){
@@ -23,13 +23,13 @@ public:
             if(isdigit(s[i])){
                 tmp = tmp * 10 + (s[i] - '0');
             }else{
-                calculate(mystack, sign, tmp);
+                cal(mystack, sign, tmp);
                 tmp = 0;
                 sign = s[i];
                 
             }
         }
-        calculate(mystack, sign, tmp);
+        cal(mystack, sign, tmp);
         int ans = 0;
         while(mystack.size()!=0){
             ans = ans + mystack.top();
