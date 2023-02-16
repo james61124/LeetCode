@@ -9,7 +9,7 @@ public:
         for(auto num : nums){
             if(set.count(num-1)==0){
                 int length = 1;
-                for(int j=1;set.count(num+j)!=0;j++){
+                for(int j=1;set.find(num+j)!=set.end();j++){
                     length++;
                 }
                 ans = max(ans, length);
