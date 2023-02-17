@@ -11,18 +11,21 @@
  */
 class Solution {
 public:
-    bool dfs(TreeNode* root, TreeNode* subRoot){
-        if(root==NULL && subRoot==NULL) return true;
-        if(root==NULL || subRoot==NULL) return false;
-        if(root->val!=subRoot->val) return false;
-        return dfs(root->left, subRoot->left) && dfs(root->right, subRoot->right);
-    }
-
-    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if(root==NULL) return false;
-        if(root->val==subRoot->val){
-            if(dfs(root, subRoot)) return true;
+    string tree2string(TreeNode* root, string s){
+        s = s + ",";
+        if(root==NULL){
+            s = s + "*";
+            return s;
         }
-        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+        s = s + to_string(root->val);
+        s = tree2string(root->left, s);
+        s = tree2string(root->right, s);
+        return s;
+    }
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        string s_root = tree2string(root, "");
+        string s_subRoot = tree2string(subRoot, "");
+        if(s_root.find(s_subRoot)!=s_root.npos) return true;
+        else return false;
     }
 };
