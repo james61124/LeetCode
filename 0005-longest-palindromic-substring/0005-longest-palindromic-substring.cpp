@@ -1,51 +1,35 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        
-        int max_count = 0;
-        string ans = "";
-        if(s.length()==1){
-            return s;
-        }
-        if(s.length()==2){
-            if(s[0]==s[1]) return s;
-            else{
-                ans = ans + s[0];
-                return ans;
+        int ans = 0;
+        int center = 0;
+        int type = 0; // 0 even 1 odd
+        for(int i=0;i<s.size();i++){
+            int step = 0;
+            while(i-step>=0 && i+step<s.size() && s[i-step]==s[i+step]){
+                step++;
+            }
+            int length = 1+(step-1)*2;
+            if(length > ans){
+                ans = length;
+                center = i;
+                type = 1;
+            }
+            step = 0;
+            while(i+1<s.size() && i-step>=0 && i+1+step<s.size() && s[i-step]==s[i+1+step]){
+                step++;
+            }
+            length = step*2;
+            if(length > ans){
+                ans = length;
+                center = i;
+                type = 0;
             }
         }
-        
-        for(int i=1;i<s.length()-1;i++){
-            int count = 1;
-            while(s[i-count]==s[i+count]){
-                count++;
-                if(i-count<0 || i+count>=s.length()) break;
-            }
-            if(((count-1)*2+1)>=max_count){
-                ans = "";
-                for(int j=i-count+1;j<=i+count-1;j++){
-                    ans = ans + s[j];
-                }
-                max_count = (count-1)*2+1;
-            }
+        if(type==0){
+            return s.substr(center-(ans/2-1), ans);
+        }else{
+            return s.substr(center-ans/2, ans);
         }
-        for(int i=0;i<s.length();i++){
-            int count = 1;
-            if(s[i]!=s[i+1]) continue;
-            if(i+1+count<s.length() && i-count>=0){
-                while(s[i-count]==s[i+1+count]){
-                    count++;
-                    if(i-count<0 || i+1+count>=s.length()) break;
-                }
-            }
-            if(count*2>=max_count){
-                ans = "";
-                for(int j=i-count+1;j<=i+1+count-1;j++){
-                    ans = ans + s[j];
-                }
-                max_count = count*2;
-            }
-        }
-        return ans;
     }
 };
