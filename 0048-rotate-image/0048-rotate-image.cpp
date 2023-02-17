@@ -1,8 +1,4 @@
 class Solution {
-    // 00 04
-    // 01 14
-    // 02 24
-    // 10 03
 public:
     void rotate(vector<vector<int>>& matrix) {
         for(int i=0;i<matrix.size();i++){
@@ -15,7 +11,3 @@ public:
         }
     }
 };
-
-// 9 6 3
-// 8 5 2
-// 7 4 1
