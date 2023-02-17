@@ -1,3 +1,4 @@
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -11,23 +12,21 @@
  */
 class Solution {
 public:
-    void tree2string(TreeNode* root, string& s){
-        
-        if(root==NULL){
-            s = s + "*";
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        string r = "", s = "";
+        tree2string(root, r);
+        tree2string(subRoot, s);
+        if(r.find(s) != string::npos) return true;
+        else return false;
+    }
+    void tree2string(TreeNode* node, string& str){ // preorder
+        if(!node){
+            str += "#";
             return;
         }
-        s = s + ",";
-        s = s + to_string(root->val);
-        tree2string(root->left, s);
-        tree2string(root->right, s);
-    }
-    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        string s_root = "";
-        tree2string(root, s_root);
-        string s_subRoot = "";
-        tree2string(subRoot, s_subRoot);
-        if(s_root.find(s_subRoot)!=s_root.npos) return true;
-        else return false;
+        str += ","; // seperate each node
+        str += to_string(node->val);
+        tree2string(node->left, str);
+        tree2string(node->right, str);
     }
 };
