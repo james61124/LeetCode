@@ -11,21 +11,22 @@
  */
 class Solution {
 public:
-    string tree2string(TreeNode* root, string s){
+    void tree2string(TreeNode* root, string& s){
         
         if(root==NULL){
             s = s + "*";
-            return s;
+            return;
         }
         s = s + ",";
         s = s + to_string(root->val);
-        s = tree2string(root->left, s);
-        s = tree2string(root->right, s);
-        return s;
+        tree2string(root->left, s);
+        tree2string(root->right, s);
     }
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        string s_root = tree2string(root, "");
-        string s_subRoot = tree2string(subRoot, "");
+        string s_root = "";
+        tree2string(root, s_root);
+        string s_subRoot = "";
+        tree2string(subRoot, s_subRoot);
         if(s_root.find(s_subRoot)!=s_root.npos) return true;
         else return false;
     }
