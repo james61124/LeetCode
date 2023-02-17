@@ -12,21 +12,18 @@
  */
 class Solution {
 public:
-    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        string r = "", s = "";
-        tree2string(root, r);
-        tree2string(subRoot, s);
-        if(r.find(s) != string::npos) return true;
-        else return false;
+    bool dfs(TreeNode* root, TreeNode* subRoot){
+        if(root==NULL && subRoot==NULL) return true;
+        if(root==NULL || subRoot==NULL) return false;
+        if(root->val!=subRoot->val) return false;
+        return dfs(root->left, subRoot->left) && dfs(root->right, subRoot->right);
     }
-    void tree2string(TreeNode* node, string& str){ // preorder
-        if(!node){
-            str += "#";
-            return;
+
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if(root==NULL) return false;
+        if(root->val==subRoot->val){
+            if(dfs(root, subRoot)) return true;
         }
-        str += ","; // seperate each node
-        str += to_string(node->val);
-        tree2string(node->left, str);
-        tree2string(node->right, str);
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 };
