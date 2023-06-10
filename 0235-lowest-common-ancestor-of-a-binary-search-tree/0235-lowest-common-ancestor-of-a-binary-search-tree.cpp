@@ -12,7 +12,7 @@ class Solution {
 public:
     TreeNode* search(TreeNode* root, TreeNode* p, TreeNode* q){
         TreeNode* ans = root;
-        if(root == NULL) return root;
+        // if(root == NULL) return root;
         
         if(p->val == root->val || q->val == root->val) ans = root;
         else if(p->val > root->val && q->val > root->val) ans = search(root->right, p, q);
