@@ -4,18 +4,17 @@ public:
     
     void dfs(vector<int>&nums, vector<int>visited, vector<int>cur){
         if(cur.size()==nums.size()){
-            vector<int>child;
-            for(int i=0;i<cur.size();i++){
-                child.push_back(nums[cur[i]]);
-            }
-            ans.push_back(child);
+            // vector<int>child;
+            // for(int i=0;i<cur.size();i++){
+            //     child.push_back(nums[cur[i]]);
+            // }
+            ans.push_back(cur);
             return;
         }
         
-        int index = cur[cur.size()-1];
         for(int i=0;i<nums.size();i++){
             if(visited[i]==0){
-                cur.push_back(i);
+                cur.push_back(nums[i]);
                 visited[i] = 1;
                 dfs(nums, visited, cur);
                 cur.pop_back();
@@ -60,7 +59,7 @@ public:
         for(int i=0;i<nums.size();i++){
             vector<int>cur;
             vector<int>visited(nums.size(), 0);
-            cur.push_back(i);
+            cur.push_back(nums[i]);
             visited[i] = 1;
             dfs(nums, visited, cur);
         }
