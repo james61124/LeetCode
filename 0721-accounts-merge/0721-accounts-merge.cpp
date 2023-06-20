@@ -40,6 +40,12 @@ public:
             }
         }
         
+        for(int i=0;i<all_account.size();i++){
+            int index = find(all_account, i);
+            name_table[index] = accounts[index][0];
+            table[index].insert(accounts[i].begin()+1, accounts[i].end());
+        }
+        
         for (const auto& [index, emails] : table) {
             vector<string>name{name_table[index]};
             name.insert(name.end(), emails.begin(), emails.end());
