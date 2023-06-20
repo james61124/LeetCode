@@ -40,15 +40,21 @@ public:
             }
         }
         
-        for (const auto& it: table) {
-            vector<string>name;
-            const auto& values = it.second;
-            name.push_back(name_table[it.first]);
+        for (const auto& [index, emails] : table) {
+            vector<string>name{name_table[index]};
+            name.insert(name.end(), emails.begin(), emails.end());
             ans.push_back(name);
-            for (auto iter = it.second.cbegin(); iter != it.second.cend(); iter++) {
-                ans[ans.size()-1].push_back(*iter);
-            }
         }
+        
+        // for (const auto& it: table) {
+        //     vector<string>name;
+        //     const auto& values = it.second;
+        //     name.push_back(name_table[it.first]);
+        //     ans.push_back(name);
+        //     for (auto iter = it.second.cbegin(); iter != it.second.cend(); iter++) {
+        //         ans[ans.size()-1].push_back(*iter);
+        //     }
+        // }
         return ans;
     }
 };
