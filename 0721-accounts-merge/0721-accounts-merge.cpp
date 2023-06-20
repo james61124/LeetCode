@@ -32,13 +32,13 @@ public:
             }
         }
         
-        for(int i=0;i<accounts.size();i++){
-            for(int j=1;j<accounts[i].size();j++){
-                int index = find(all_account, i);
-                name_table[index] = accounts[index][0];
-                table[index].insert(accounts[i][j]);
-            }
-        }
+        // for(int i=0;i<accounts.size();i++){
+        //     for(int j=1;j<accounts[i].size();j++){
+        //         int index = find(all_account, i);
+        //         name_table[index] = accounts[index][0];
+        //         table[index].insert(accounts[i][j]);
+        //     }
+        // }
         
         for(int i=0;i<all_account.size();i++){
             int index = find(all_account, i);
