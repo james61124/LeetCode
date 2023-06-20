@@ -14,13 +14,14 @@ public:
     
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
         vector<int>all_account(accounts.size());
-        map<string, int>mp;
+        unordered_map<string, int>mp;
         vector<vector<string>>ans;
         unordered_map<int, set<string>>table;
         unordered_map<int, string>name_table;
         for (int i = 0; i < accounts.size(); i++) {
             all_account[i] = i;
         }
+        
         for(int i=0;i<accounts.size();i++){
             for(int j=1;j<accounts[i].size();j++){
                 if(mp.count(accounts[i][j])==0){
@@ -30,27 +31,15 @@ public:
                 }
             }
         }
+        
         for(int i=0;i<accounts.size();i++){
             for(int j=1;j<accounts[i].size();j++){
                 int index = find(all_account, i);
                 name_table[index] = accounts[index][0];
                 table[index].insert(accounts[i][j]);
-                // cout<<index<<" "<<accounts[i][j]<<endl;
             }
         }
-//         for (const auto& kv : table) {
-//             const int& key = kv.first;
-//             const std::set<std::string>& values = kv.second;
-
-//             std::cout << "Key: " << key << std::endl;
-//             std::cout << "Values:";
-
-//             for (const auto& value : values) {
-//                 std::cout << " " << value;
-//             }
-
-//             std::cout << std::endl;
-//         }
+        
         for (const auto& it: table) {
             vector<string>name;
             const auto& values = it.second;
