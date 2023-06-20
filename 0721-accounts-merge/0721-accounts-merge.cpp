@@ -46,15 +46,6 @@ public:
             ans.push_back(name);
         }
         
-        // for (const auto& it: table) {
-        //     vector<string>name;
-        //     const auto& values = it.second;
-        //     name.push_back(name_table[it.first]);
-        //     ans.push_back(name);
-        //     for (auto iter = it.second.cbegin(); iter != it.second.cend(); iter++) {
-        //         ans[ans.size()-1].push_back(*iter);
-        //     }
-        // }
         return ans;
     }
 };
